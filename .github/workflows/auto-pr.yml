@@ -1,0 +1,23 @@
+name: Auto Create PR
+ 
+on:
+  push:
+    branches:
+      - develop
+ 
+jobs:
+  create_pull_request:
+    runs-on: ubuntu-latest
+ 
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+ 
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: develop
+          base: main
+          title: "Auto PR: Develop → Main"
+          body: "Automated PR created after new commit in develop branch."
