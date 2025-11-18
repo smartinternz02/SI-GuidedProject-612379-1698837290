@@ -1,5 +1,9 @@
 name: Auto Create PR
  
+permissions:
+  contents: write
+  pull-requests: write
+ 
 on:
   push:
     branches:
@@ -20,4 +24,4 @@ jobs:
           branch: develop
           base: main
           title: "Auto PR: Develop → Main"
-          body: "Automated PR created after new commit in develop branch."
+          body: "Automated PR created after pushing to develop."
